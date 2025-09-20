@@ -1,5 +1,5 @@
 import { Pool } from "pg";
-import { env } from "@/common/utils/envConfig.js";
+import { env } from "@/common/utils/env.config.js";
 import { drizzle } from "drizzle-orm/node-postgres";
 import * as schema from "./schema.js";
 

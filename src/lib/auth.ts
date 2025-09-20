@@ -1,7 +1,7 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { db } from "@/db/db.js";
-import { env } from "@/common/utils/envConfig.js";
+import { env } from "@/common/utils/env.config.js";
 import { openAPI } from "better-auth/plugins";
 import { sendEmail } from "./mailer.js";
 

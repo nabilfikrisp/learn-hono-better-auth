@@ -55,3 +55,7 @@ export const auth = betterAuth({
   },
 });
 ```
+
+## better auth routes docs
+
+start the server and open this [http://localhost:3001/api/auth/reference#tag/default](http://localhost:3001/api/auth/reference#tag/default)

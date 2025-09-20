@@ -1,0 +1,10 @@
+services:
+  postgres:
+    image: postgres:17.5-alpine
+    container_name: hono-better-auth-postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: hono_better_auth
+    ports:
+      - "5433:5432"

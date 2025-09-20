@@ -2,9 +2,16 @@ services:
   postgres:
     image: postgres:17.5-alpine
     container_name: hono-better-auth-postgres
+    restart: unless-stopped
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
       POSTGRES_DB: hono_better_auth
     ports:
       - "5433:5432"
+  mailpit:
+    image: axllent/mailpit
+    container_name: hono-better-auth-mailpit
+    ports:
+      - "8025:8025"
+      - "1025:1025"

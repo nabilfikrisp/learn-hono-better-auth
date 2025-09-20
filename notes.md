@@ -82,3 +82,7 @@ When a user signs in, BetterAuth creates a session in the database and sets an H
 - setup middleware and cors, guard protected routes with the middleware (better auth give us the example)
 - create todo route, and guard it
 - the follow along is done
+
+## next step
+
+- for our own implementation, implement all crud with raw sql and attach openAPI for every route

@@ -7,7 +7,8 @@ const envSchema = {
   NODE_ENV: z
     .enum(["development", "production", "test"])
     .default("development"),
-  PORT: z.coerce.number().default(3000),
+  PORT: z.coerce.number().default(3001),
+  DATABASE_URL: z.url(),
 };
 
 const parsedEnv = z.object(envSchema).safeParse(process.env);
@@ -17,7 +18,7 @@ if (!parsedEnv.success) {
   throw new Error("Invalid environment variables");
 }
 
-export const ENV = {
+export const env = {
   ...parsedEnv.data,
   IS_DEV: parsedEnv.data.NODE_ENV === "development",
   IS_PROD: parsedEnv.data.NODE_ENV === "production",

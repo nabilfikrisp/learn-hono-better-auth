@@ -7,8 +7,10 @@ const envSchema = {
   NODE_ENV: z
     .enum(["development", "production", "test"])
     .default("development"),
-  PORT: z.coerce.number().default(3000),
+  PORT: z.coerce.number().default(3001),
   DATABASE_URL: z.url(),
+  BETTER_AUTH_SECRET: z.string(),
+  BETTER_AUTH_URL: z.url().default("http://localhost:3001"),
 };
 
 const parsedEnv = z.object(envSchema).safeParse(process.env);

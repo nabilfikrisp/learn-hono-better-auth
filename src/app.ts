@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import type { HonoVar } from "./common/types/hono.types.js";
 import { auth } from "./lib/auth.js";
+import todoRouter from "./api/todo/todo.router.js";
 
 const app = new Hono<HonoVar>();
 
@@ -18,9 +19,6 @@ app.use(
 );
 
 app.on(["POST", "GET"], "/api/auth/*", (c) => auth.handler(c.req.raw));
-
-app.get("/", (c) => {
-  return c.json({ message: "Hello Hono!" });
-});
+app.route("/api/todos", todoRouter);
 
 export { app };

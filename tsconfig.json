@@ -12,7 +12,9 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+    "moduleResolution": "NodeNext",
+    "noUnusedParameters": true
   },
   "exclude": ["node_modules"]
 }

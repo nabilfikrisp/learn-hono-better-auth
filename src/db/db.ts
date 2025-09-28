@@ -2,10 +2,12 @@ import "dotenv/config";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
 import * as schema from "./schema.js";
-import { ENV } from "@/common/utils/env.config.js";
+import { env } from "@/common/utils/env.config.js";
 
 const pool = new Pool({
-  connectionString: ENV.DATABASE_URL,
+  connectionString: env.DATABASE_URL,
+  max: 10,
+  idleTimeoutMillis: 30000,
 });
 
 export const db = drizzle({

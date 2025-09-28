@@ -11,6 +11,11 @@ const envSchema = {
   DATABASE_URL: z.url(),
   BETTER_AUTH_SECRET: z.string(),
   BETTER_AUTH_URL: z.url().default("http://localhost:3001"),
+  SMTP_HOST: z.string().default("localhost"),
+  SMTP_PORT: z.coerce.number().default(1025),
+  SMTP_SECURE: z.stringbool().default(false),
+  SMTP_USER: z.string().optional(),
+  SMTP_PASS: z.string().optional(),
 };
 
 const parsedEnv = z.object(envSchema).safeParse(process.env);
@@ -20,7 +25,7 @@ if (!parsedEnv.success) {
   throw new Error("Invalid environment variables");
 }
 
-export const ENV = {
+export const env = {
   ...parsedEnv.data,
   IS_DEV: parsedEnv.data.NODE_ENV === "development",
   IS_PROD: parsedEnv.data.NODE_ENV === "production",

@@ -15,6 +15,13 @@
       "when": 1759054323319,
       "tag": "0001_init_todo_table",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1759140677166,
+      "tag": "0002_init_leaderboard_table",
+      "breakpoints": true
     }
   ]
 }

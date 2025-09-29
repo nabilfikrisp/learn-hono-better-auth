@@ -2,6 +2,6 @@ POST http://localhost:3001/api/todos
 Content-Type: application/json
 
 {
-  "title": "Testing nabil second",
-  "description": "Milk, Bread, Eggs"
+  "title": "Lets Play some Game",
+  "description": "I want to play some game today"
 }

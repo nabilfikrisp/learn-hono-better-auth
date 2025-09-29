@@ -1,4 +1,11 @@
-import { pgTable, text, timestamp, boolean, uuid } from "drizzle-orm/pg-core";
+import {
+  pgTable,
+  text,
+  timestamp,
+  boolean,
+  uuid,
+  integer,
+} from "drizzle-orm/pg-core";
 
 export const todo = pgTable("todo", {
   id: uuid().primaryKey().defaultRandom(),
@@ -12,6 +19,17 @@ export const todo = pgTable("todo", {
   updatedAt: timestamp("updated_at")
     .defaultNow()
     .$onUpdate(() => /* @__PURE__ */ new Date())
+    .notNull(),
+});
+
+export const leaderboard = pgTable("leaderboard", {
+  userId: text("user_id")
+    .primaryKey()
+    .references(() => user.id, { onDelete: "cascade" }),
+  completedCount: integer("completed_count").default(0).notNull(),
+  updatedAt: timestamp("updated_at")
+    .defaultNow()
+    .$onUpdate(() => new Date())
     .notNull(),
 });
 

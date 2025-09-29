@@ -27,9 +27,11 @@ todoRouter.post("/", createTodoValidator, async (c) => {
 
   try {
     const newTodo = await insertTodo({ userId: user.id, ...tododata });
+
     return c.json({ message: "Success create todo", data: newTodo }, 201);
   } catch (error) {
     console.error("Error inserting todo:", error);
+
     return c.json({ message: "Failed to create todo" }, 500);
   }
 });
@@ -40,12 +42,17 @@ todoRouter.post("/:id/complete", async (c) => {
 
   try {
     const updatedTodo = await completeTodo(todoId, user.id);
-    return c.json({
-      message: "Todo completed",
-      data: updatedTodo,
-    });
+
+    return c.json(
+      {
+        message: "Todo completed",
+        data: updatedTodo,
+      },
+      201
+    );
   } catch (error) {
     console.error("Error completing todo:", error);
+
     return c.json({ message: "Failed to complete todo" }, 500);
   }
 });

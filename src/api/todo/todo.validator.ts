@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { zValidator } from "@hono/zod-validator";
+import { validationErrorResponse } from "@/common/utils/response.util.js";
 
 export const createTodoSchema = z.strictObject(
   {
@@ -23,13 +24,8 @@ export const createTodoValidator = zValidator(
   createTodoSchema,
   async (result, c) => {
     if (!result.success) {
-      return c.json(
-        {
-          message: "Validation error",
-          errors: result.error.issues.map((issue) => issue.message),
-        },
-        400
-      );
+      const errors = result.error.issues.map((issue) => issue.message);
+      return validationErrorResponse(c, errors);
     }
   }
 );

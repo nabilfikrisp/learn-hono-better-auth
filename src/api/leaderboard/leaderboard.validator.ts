@@ -1,3 +1,4 @@
+import { validationErrorResponse } from "@/common/utils/response.util.js";
 import { zValidator } from "@hono/zod-validator";
 import { z } from "zod";
 
@@ -16,13 +17,8 @@ export const leaderboardQueryValidator = zValidator(
   leaderboardQuerySchema,
   async (result, c) => {
     if (!result.success) {
-      return c.json(
-        {
-          message: "Validation error",
-          errors: result.error.issues.map((issue) => issue.message),
-        },
-        400
-      );
+      const errors = result.error.issues.map((issue) => issue.message);
+      return validationErrorResponse(c, errors);
     }
   }
 );

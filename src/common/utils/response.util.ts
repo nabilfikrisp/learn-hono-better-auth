@@ -5,5 +5,5 @@ export function validationErrorResponse(
   errors: string[],
   message = "Validation error"
 ) {
-  return c.json({ message, errors }, 400);
+  return c.json({ message, errors }, 422);
 }

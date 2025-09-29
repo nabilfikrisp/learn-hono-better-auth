@@ -43,13 +43,10 @@ todoRouter.post("/:id/complete", async (c) => {
   try {
     const updatedTodo = await completeTodo(todoId, user.id);
 
-    return c.json(
-      {
-        message: "Todo completed",
-        data: updatedTodo,
-      },
-      201
-    );
+    return c.json({
+      message: "Todo completed",
+      data: updatedTodo,
+    });
   } catch (error) {
     console.error("Error completing todo:", error);
 
